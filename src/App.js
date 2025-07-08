@@ -6,6 +6,8 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Footer from "./components/footer";
 import ProductListing from "./pages/ProductListing";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 
 export default function App() {
   return (
@@ -15,6 +17,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:categoryId" element={<ProductListing />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
         <Footer />
       </Router>

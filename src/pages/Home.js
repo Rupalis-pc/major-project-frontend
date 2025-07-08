@@ -12,7 +12,7 @@ export default function Home() {
         {furnitureItems.map((item) => {
           return (
             <div className="col-md-2" key={item.type}>
-              <Link to={"/" + item.categoryId}>
+              <Link to={"/" + item.categoryId} className="text-decoration-none">
                 <div
                   className="card border-0 text-center mb-2 align-items-center"
                   style={{ padding: "1rem" }}

@@ -1,44 +1,25 @@
-import { useParams } from "react-router-dom";
-import { products } from "./array";
-import { furnitureItems } from "./array";
+import { useEffect } from "react";
 import useProductContext from "../contexts/useContext";
+import { products } from "./array";
 
-export default function ProductListing() {
-  const { addToCart, addToWishlist } = useProductContext();
+export default function Wishlist() {
+  const { wishListProductIds } = useProductContext();
 
-  const selectedCategory = useParams();
-
-  const selectedCategoryProducts = products.filter(
-    (product) => product.categoryId == selectedCategory.categoryId
+  const wishlistProducts = products.filter((product) =>
+    wishListProductIds.includes(product.productId)
   );
-  console.log(selectedCategory);
-
-  const selectedFurniture = furnitureItems.find(
-    (item) => item.categoryId == selectedCategory.categoryId
-  );
-
-  const addToCartHandler = (product) => {
-    addToCart(product.productId);
-  };
-
-  const addToWishlistHandler = (product) => {
-    addToWishlist(product.productId);
-  };
+  console.log(wishlistProducts);
 
   return (
     <main className="container">
       <div className="text-center">
-        <h2 className="mb-0">{selectedFurniture.type}</h2>
         <span className="text-secondary">
-          ({selectedCategoryProducts.length} Products)
+          ({wishlistProducts.length} Products)
         </span>
-        <p>
-          {selectedFurniture.type} - {selectedFurniture.description}
-        </p>
         <hr />
       </div>
       <div className="row py-4">
-        {selectedCategoryProducts.map((product) => (
+        {wishlistProducts.map((product) => (
           <div className="col-md-3 mb-5" key={product.productId}>
             <div className="card h-100 shadow-sm border-0">
               <div className="position-relative">
@@ -60,7 +41,7 @@ export default function ProductListing() {
                       width: "40px",
                       height: "40px",
                     }}
-                    onClick={() => addToWishlistHandler(product)}
+                    onClick={() => console.log("addToWishlistHandler")}
                   >
                     <i className="bi bi-suit-heart text-white fs-5"></i>
                   </button>
@@ -73,9 +54,9 @@ export default function ProductListing() {
                 <p className="text-muted mb-3">₹ {product.productPrice}</p>
                 <button
                   className="btn btn-info w-100"
-                  onClick={() => addToCartHandler(product)}
+                  onClick={() => console.log("redirect to cart")}
                 >
-                  Add to Cart
+                  Move to cart
                 </button>
               </div>
             </div>

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import useProductContext from "../contexts/useContext";
 
 export default function Nav() {
+  const { addedProductIds, wishListProductIds } = useProductContext();
+
   return (
-    <div className="bg-info mb-4">
+    <div className="bg-info mb-4 text-white">
       <nav className="navbar navbar-expand-lg py-3">
         <div className="container">
           <Link
@@ -19,17 +22,23 @@ export default function Nav() {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn btn-light" type="submit">
-              Search
-            </button>
           </form>
-          <div class="d-flex flex-row mb-3 gap-4">
-            <button className="btn btn-outline-light">Login</button>
-
-            <i className="bi bi-suit-heart text-white fs-4"></i>
+          <div className="d-flex flex-row mb-3 gap-4">
+            <Link to="/wishlist" className="text-white text-decoration-none">
+              <div className="d-flex flex-column align-items-center">
+                <i className="bi bi-suit-heart fs-4"></i>
+                <p className="mb-0">
+                  Wishlist ({wishListProductIds.length})
+                </p>{" "}
+              </div>
+            </Link>
             <div>
-              <i class="bi bi-cart text-white fs-4"></i>
-              <span className="text-white">Cart</span>
+              <Link to="/cart" className="text-white text-decoration-none">
+                <div className="d-flex flex-column align-items-center">
+                  <i className="bi bi-cart fs-4"></i>
+                  <p className="mb-0">Cart ({addedProductIds.length})</p>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
