@@ -18,9 +18,26 @@ export function ProductProvider({ children }) {
     setWishListProductIds((prevValues) => [...prevValues, value]);
   }
 
+  function deleteFromWishList(value) {
+    setWishListProductIds((prevValues) =>
+      prevValues.filter((id) => id != value)
+    );
+  }
+
+  function deleteFromCart(value) {
+    setAddedProductIds((prevValues) => prevValues.filter((id) => id != value));
+  }
+
   return (
     <ProductContext.Provider
-      value={{ addedProductIds, addToCart, wishListProductIds, addToWishlist }}
+      value={{
+        addedProductIds,
+        addToCart,
+        wishListProductIds,
+        addToWishlist,
+        deleteFromWishList,
+        deleteFromCart,
+      }}
     >
       {children}
     </ProductContext.Provider>
