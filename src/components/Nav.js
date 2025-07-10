@@ -2,7 +2,15 @@ import { Link } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
 
 export default function Nav() {
-  const { addedProductIds, wishListProductIds } = useProductContext();
+  const { addedProductIds, wishListProductIds, searchProduct, searchInput } =
+    useProductContext();
+
+  function searchHandler(event) {
+    const value = event.target.value
+    searchProduct(value);
+  }
+
+  // console.log(searchInput);
 
   return (
     <div className="bg-info mb-4 text-white">
@@ -17,10 +25,13 @@ export default function Nav() {
           </Link>
           <form className="d-flex" role="search">
             <input
-              className="form-control me-2"
+              className="form-control  me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search by Category or Name"
               aria-label="Search"
+              value={searchInput}
+              onChange={searchHandler}
+              style={{ width: "250px" }}
             />
           </form>
           <div className="d-flex flex-row mb-3 gap-4">

@@ -3,21 +3,19 @@ import useProductContext from "../contexts/useContext";
 import { products } from "./array";
 
 export default function Cart() {
-  const { addedProductIds, addToWishlist, deleteFromCart } =
-    useProductContext();
+  const {
+    addedProductIds,
+    addToWishlist,
+    deleteFromCart,
+    increaseQuantity,
+    getProductQuantity,
+    decreaseQuantity,
+    wishListProductIds,
+  } = useProductContext();
 
   const addedProducts = products.filter((product) =>
     addedProductIds.includes(product.productId)
   );
-
-  function addToWishlistHandler(product) {
-    addToWishlist(product.productId);
-    deleteFromCart(product.productId);
-  }
-
-  function removeFromCartHandler(product) {
-    deleteFromCart(product.productId);
-  }
 
   return (
     <main className="container">
@@ -39,31 +37,54 @@ export default function Cart() {
                     <li className="list-group-item" key={product.productId}>
                       <div className="row g-4 py-4" style={{ width: "540px" }}>
                         <div className="col-md-5">
-                          <img
-                            src={product.productImage}
-                            className="img-fluid rounded"
-                            style={{
-                              height: "170px",
-                              width: "100%",
-                              objectFit: "cover",
-                            }}
-                            alt={product.productName}
-                          />
+                          <Link
+                            to={"/product/" + product.productId}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <img
+                              src={product.productImage}
+                              className="img-fluid rounded"
+                              style={{
+                                height: "220px",
+                                width: "100%",
+                                objectFit: "cover",
+                              }}
+                              alt={product.productName}
+                            />
+                          </Link>
                         </div>
                         <div className="col-md-7">
                           <div>
-                            <h5 className="mb-0">{product.productName}</h5>
+                            <Link
+                              to={"/product/" + product.productId}
+                              style={{ textDecoration: "none", color: "black" }}
+                            >
+                              <h5 className="mb-0">{product.productName}</h5>
+                            </Link>
                             <p>({product.categoryType})</p>
                             <div className="d-flex gap-2 align-items-center mb-4">
                               <p>Qty: </p>
                               <div className="btn-group" role="group">
-                                <button className="btn btn-outline-info">
+                                <button
+                                  className="btn btn-outline-info"
+                                  onClick={() =>
+                                    decreaseQuantity(product.productId)
+                                  }
+                                >
                                   -
                                 </button>
-                                <button className="btn btn-outline-info">
-                                  1
+                                <button
+                                  className="btn btn-outline-info"
+                                  disabled
+                                >
+                                  {getProductQuantity(product.productId)}
                                 </button>
-                                <button className="btn btn-outline-info">
+                                <button
+                                  onClick={() =>
+                                    increaseQuantity(product.productId)
+                                  }
+                                  className="btn btn-outline-info"
+                                >
                                   +
                                 </button>
                               </div>
@@ -72,19 +93,33 @@ export default function Cart() {
                             </div>
                             <div className="d-grid gap-2 col-10 ml-0">
                               <button
-                                onClick={() => removeFromCartHandler(product)}
+                                onClick={() => deleteFromCart(product.productId)}
                                 className="btn btn-info"
                                 type="button"
                               >
                                 Remove From Cart
                               </button>
-                              <button
-                                onClick={() => addToWishlistHandler(product)}
-                                className="btn btn-info"
-                                type="button"
-                              >
-                                Add To Wishlist
-                              </button>
+                              {wishListProductIds.find(
+                                (id) => id === product.productId
+                              ) ? (
+                                <Link
+                                  to="/wishlist"
+                                  type="button"
+                                  className="btn btn-info"
+                                >
+                                  Move to Wishlist
+                                </Link>
+                              ) : (
+                                <button
+                                  onClick={() =>
+                                    addToWishlist(product.productId)
+                                  }
+                                  className="btn btn-info"
+                                  type="button"
+                                >
+                                  Add To Wishlist
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>

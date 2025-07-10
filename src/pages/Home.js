@@ -1,7 +1,16 @@
+import useProductContext from "../contexts/useContext";
 import { furnitureItems } from "./array";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const { searchInput } = useProductContext();
+
+  const showFurniture = searchInput
+    ? furnitureItems.filter((item) =>
+        item.type.toLowerCase().includes(searchInput.toLowerCase())
+      )
+    : furnitureItems;
+
   return (
     <main className="container">
       <div className="text-center mb-4 ">
@@ -9,7 +18,7 @@ export default function Home() {
         <small>Impressive Collection for your Dream Home</small>
       </div>
       <div className="row">
-        {furnitureItems.map((item) => {
+        {showFurniture.map((item) => {
           return (
             <div className="col-md-2" key={item.type}>
               <Link to={"/" + item.categoryId} className="text-decoration-none">
@@ -52,49 +61,11 @@ export default function Home() {
             className="img-fluid"
           />
         </div>
-        <button className="btn btn-info">Explore Now</button>
+        <Link to="/newCollection" type="button" className="btn btn-info">
+          Explore Now
+        </Link>
       </div>
-      <div className="row py-4">
-        <div className="col-md-4">
-          <div className="card border-0">
-            <div className="text-center align-items-center">
-              <img
-                src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVkcm9vbXxlbnwwfHwwfHx8MA%3D%3D"
-                className=" object-fit-cover"
-                style={{ height: "380px", width: "350px" }}
-              />
-              <p className="mt-2 fw-semibold">BEDROOM</p>
-              <button className="btn btn-info">Explore Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card border-0">
-            <div className="text-center align-items-center">
-              <img
-                src="https://images.unsplash.com/photo-1505409628601-edc9af17fda6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGluaW5nJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D"
-                className=" object-fit-cover"
-                style={{ height: "380px", width: "350px" }}
-              />
-              <p className="mt-2 fw-semibold">DINING ROOM</p>
-              <button className="btn btn-info">Explore Now</button>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card border-0">
-            <div className="text-center align-items-center">
-              <img
-                src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bGl2aW5nJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D"
-                className=" object-fit-cover"
-                style={{ height: "380px", width: "350px" }}
-              />
-              <p className="mt-2 fw-semibold">LIVING ROOM</p>
-              <button className="btn btn-info">Explore Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div className="py-4">
         <h4>
           Buy Furniture Online at Earthcraft – India's One-Stop Solution for All
