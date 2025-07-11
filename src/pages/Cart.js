@@ -17,6 +17,13 @@ export default function Cart() {
     addedProductIds.includes(product.productId)
   );
 
+  const allAddedProductPrice = addedProducts.reduce(
+    (acc, curr) => acc + curr.mrp * getProductQuantity(curr.productId),
+    0
+  );
+
+  const deliveryCharges = 120;
+
   return (
     <main className="container">
       <div className="row justify-content-center">
@@ -63,10 +70,10 @@ export default function Cart() {
                             </Link>
                             <p>({product.categoryType})</p>
                             <div className="d-flex gap-2 align-items-center mb-4">
-                              <p>Qty: </p>
+                              <div>Qty: </div>
                               <div className="btn-group" role="group">
                                 <button
-                                  className="btn btn-outline-info"
+                                  className="btn btn-outline-info btn-sm"
                                   onClick={() =>
                                     decreaseQuantity(product.productId)
                                   }
@@ -74,7 +81,7 @@ export default function Cart() {
                                   -
                                 </button>
                                 <button
-                                  className="btn btn-outline-info"
+                                  className="btn btn-outline-info btn-sm"
                                   disabled
                                 >
                                   {getProductQuantity(product.productId)}
@@ -83,17 +90,19 @@ export default function Cart() {
                                   onClick={() =>
                                     increaseQuantity(product.productId)
                                   }
-                                  className="btn btn-outline-info"
+                                  className="btn btn-outline-info btn-sm"
                                 >
                                   +
                                 </button>
                               </div>
 
-                              <p>Rs. {product.productPrice}</p>
+                              <div>Rs. {product.productPrice}</div>
                             </div>
                             <div className="d-grid gap-2 col-10 ml-0">
                               <button
-                                onClick={() => deleteFromCart(product.productId)}
+                                onClick={() =>
+                                  deleteFromCart(product.productId)
+                                }
                                 className="btn btn-info"
                                 type="button"
                               >
@@ -137,23 +146,20 @@ export default function Cart() {
                       <hr />
                       <div className="d-flex justify-content-between">
                         <p>Price ({addedProductIds.length} Product)</p>
-                        <p>Rs. </p>
+                        <p>Rs. {allAddedProductPrice}</p>
                       </div>
-                      <div className="d-flex justify-content-between">
-                        <p>Discount </p>
-                        <p>- Rs. </p>
-                      </div>
+
                       <div className="d-flex justify-content-between">
                         <p>Delivery Charges</p>
-                        <p>Rs. </p>
+                        <p>Rs. {deliveryCharges} </p>
                       </div>
                       <hr />
                       <div className="d-flex justify-content-between fw-bold mb-0">
                         <p>TOTAL AMOUNT</p>
-                        <p>Rs. </p>
+                        <p>Rs. {allAddedProductPrice + deliveryCharges} </p>
                       </div>
                       <hr />
-                      <p>You will save Rs. on this order</p>
+
                       <div className="d-grid">
                         <button
                           className="btn btn-info"
