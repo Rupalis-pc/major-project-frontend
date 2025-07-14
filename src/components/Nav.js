@@ -35,6 +35,13 @@ export default function Nav() {
             />
           </form>
           <div className="d-flex flex-row mb-3 gap-4">
+            <NavLink to="/profile" className="text-white text-decoration-none">
+              <div className="d-flex flex-column align-items-center">
+                <i className="bi bi-person-circle fs-4"></i>
+                <p className="mb-0">Profile</p>
+              </div>
+            </NavLink>
+
             <NavLink to="/wishlist" className="text-white text-decoration-none">
               <div className="d-flex flex-column align-items-center">
                 <i className="bi bi-suit-heart fs-4"></i>

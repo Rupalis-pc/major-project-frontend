@@ -3,6 +3,7 @@ import { products } from "./array";
 import { furnitureItems } from "./array";
 import useProductContext from "../contexts/useContext";
 import { Link } from "react-router-dom";
+import HorizontalFilter from "./HorizontalFilter";
 
 export default function ProductListing() {
   const {
@@ -54,6 +55,9 @@ export default function ProductListing() {
         </p>
         <hr />
       </div>
+
+      <HorizontalFilter />
+
       <div className="row py-4">
         {showProducts?.map((product) => (
           <div className="col-md-3 mb-5" key={product.productId}>
@@ -94,6 +98,17 @@ export default function ProductListing() {
                   </button>
                 </div>
               </div>
+
+              <div className="d-flex justify-content-between">
+                <small className="text-secondary ms-2">
+                  Rating: {product.productRating}{" "}
+                  <i class="bi bi-star-fill"></i>
+                </small>
+                <small className="text-secondary me-2">
+                  MRP: ₹ {product.mrp}
+                </small>
+              </div>
+
               <div className="card-body text-center">
                 <Link
                   to={"/product/" + product.productId}
@@ -103,7 +118,13 @@ export default function ProductListing() {
                     {product.productName}
                   </h5>
                 </Link>
-                <p className="text-muted mb-3">₹ {product.productPrice}</p>
+                <p className="mb-3">
+                  ₹ {product.productPrice}{" "}
+                  <span className="text-danger small">
+                    <i className="bi bi-arrow-down small me-1"></i>
+                    {product.discount} Off
+                  </span>
+                </p>
                 <button
                   className="btn btn-info w-100"
                   onClick={() => addToCartHandler(product)}

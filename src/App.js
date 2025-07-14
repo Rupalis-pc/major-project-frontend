@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProductProvider } from "./contexts/useContext";
@@ -10,6 +11,7 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import ProductDetail from "./pages/ProductDetail";
 import NewCollection from "./pages/NewCollection";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -23,6 +25,7 @@ export default function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/newCollection" element={<NewCollection />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </Router>

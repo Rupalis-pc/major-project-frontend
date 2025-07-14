@@ -60,6 +60,17 @@ export default function Wishlist() {
                     </button>
                   </div>
                 </div>
+
+                <div className="d-flex justify-content-between">
+                  <small className="text-secondary ms-2">
+                    Rating: {product.productRating}{" "}
+                    <i class="bi bi-star-fill"></i>
+                  </small>
+                  <small className="text-secondary me-2">
+                    MRP: ₹ {product.mrp}
+                  </small>
+                </div>
+
                 <div className="card-body text-center">
                   <Link
                     to={"/product/" + product.productId}
@@ -69,7 +80,13 @@ export default function Wishlist() {
                       {product.productName}
                     </h5>
                   </Link>
-                  <p className="text-muted mb-3">₹ {product.productPrice}</p>
+                  <p className="text-muted mb-3">
+                    ₹ {product.productPrice}{" "}
+                    <span className="text-danger small">
+                      <i className="bi bi-arrow-down small me-1"></i>
+                      {product.discount} Off
+                    </span>
+                  </p>
                   <button
                     className="btn btn-info w-100"
                     onClick={() => MoveToCartHandler(product)}
