@@ -7,6 +7,8 @@ import { useState } from "react";
 
 export default function ProductListing() {
   const [rating, setRating] = useState("all");
+  const [theme, setTheme] = useState("all");
+  const [sortBy, setSortBy] = useState("sortById");
 
   const {
     addToCart,
@@ -47,15 +49,31 @@ export default function ProductListing() {
 
   // console.log(showProducts);
 
-  const filteredProducts =
-    rating === "all"
-      ? showProducts
-      : showProducts.filter(
-          (product) => product.productRating >= parseInt(rating)
-        );
+  const filteredProducts = showProducts.filter((product) => {
+    const ratingMatch =
+      rating === "all" || product.productRating >= parseInt(rating);
+
+    const themeMatch = theme === "all" || product.theme === theme;
+
+    return ratingMatch && themeMatch;
+  });
+
   // console.log(typeof parseInt(rating), filteredProducts);
 
-  const finalProducts = filteredProducts;
+  let finalProducts = filteredProducts;
+  // console.log(parseInt(rating), filteredProducts, theme);
+
+  if (sortBy === "sortLowToHighPrice") {
+    finalProducts = [...filteredProducts].sort(
+      (a, b) => a.productPrice - b.productPrice
+    );
+  } else if (sortBy === "sortHighToLowPrice") {
+    finalProducts = [...finalProducts].sort(
+      (a, b) => b.productPrice - a.productPrice
+    );
+  } else {
+    finalProducts = [...finalProducts];
+  }
 
   return (
     <main className="px-4">
@@ -72,7 +90,24 @@ export default function ProductListing() {
         {/* Filters */}
         <div className="col-md-3 mb-4">
           <div className="card p-3 shadow-sm border-0">
-            <h5 className="mb-3">Filters</h5>
+            <div className="d-flex justify-content-between">
+              <h5 className="mb-3">Filters</h5>
+              {rating !== "all" || theme !== "all" || sortBy !== "sortById" ? (
+                <span
+                  className="text-danger d-flex align-items-center mb-3"
+                  style={{ fontSize: "0.7rem" }}
+                  onClick={() => {
+                    setRating("all");
+                    setTheme("all");
+                    setSortBy("sortById");
+                  }}
+                >
+                  CLEAR ALL
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
 
             <div className="mb-3">
               <label
@@ -95,6 +130,23 @@ export default function ProductListing() {
               </select>
             </div>
 
+            <div className="mb-3">
+              <label htmlFor="themeDropdown" className="form-label fw-semibold">
+                Theme
+              </label>
+              <select
+                className="form-select"
+                id="themeDropdown"
+                value={theme}
+                onChange={(event) => setTheme(event.target.value)}
+              >
+                <option value="all">All Themes</option>
+                <option value="modern">Modern</option>
+                <option value="classic">Classic</option>
+                <option value="bohi">Boho</option>
+              </select>
+            </div>
+
             <div>
               <p className="fw-semibold mb-2">Sort By</p>
               <div className="form-check">
@@ -104,7 +156,11 @@ export default function ProductListing() {
                   name="sortPrice"
                   id="sortLowToHigh"
                 />
-                <label className="form-check-label" htmlFor="sortLowToHigh">
+                <label
+                  className="form-check-label"
+                  htmlFor="sortLowToHigh"
+                  onClick={() => setSortBy("sortLowToHighPrice")}
+                >
                   Price: Low to High
                 </label>
               </div>
@@ -115,7 +171,11 @@ export default function ProductListing() {
                   name="sortPrice"
                   id="sortHighToLow"
                 />
-                <label className="form-check-label" htmlFor="sortHighToLow">
+                <label
+                  className="form-check-label"
+                  htmlFor="sortHighToLow"
+                  onClick={() => setSortBy("sortHighToLowPrice")}
+                >
                   Price: High to Low
                 </label>
               </div>

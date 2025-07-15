@@ -96,7 +96,7 @@ export const products = [
     mrp: 30994,
     productPrice: 25415,
     discount: "18%",
-    productRating: 4.4,
+    theme: "modern",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -111,7 +111,7 @@ export const products = [
     mrp: 28040,
     productPrice: 23834,
     discount: "15%",
-    productRating: 3.9,
+    theme: "boho",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -126,7 +126,7 @@ export const products = [
     mrp: 48857,
     productPrice: 39085,
     discount: "20%",
-    productRating: 4.1,
+    theme: "classic",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -141,7 +141,7 @@ export const products = [
     mrp: 45165,
     productPrice: 32970,
     discount: "27%",
-    productRating: 3.8,
+    theme: "modern",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -156,7 +156,7 @@ export const products = [
     mrp: 25499,
     productPrice: 21674,
     discount: "15%",
-    productRating: 3.8,
+    theme: "boho",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -171,7 +171,7 @@ export const products = [
     mrp: 25694,
     productPrice: 15673,
     discount: "39%",
-    productRating: 4.9,
+    theme: "classic",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -186,7 +186,7 @@ export const products = [
     mrp: 30425,
     productPrice: 22514,
     discount: "26%",
-    productRating: 4.6,
+    theme: "modern",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -201,7 +201,7 @@ export const products = [
     mrp: 13400,
     productPrice: 11792,
     discount: "12%",
-    productRating: 5.0,
+    theme: "boho",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -216,7 +216,7 @@ export const products = [
     mrp: 32811,
     productPrice: 22967,
     discount: "30%",
-    productRating: 3.9,
+    theme: "classic",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -231,7 +231,7 @@ export const products = [
     mrp: 36761,
     productPrice: 22791,
     discount: "38%",
-    productRating: 3.7,
+    theme: "modern",
     description: "A cozy and stylish sofa perfect for any living space.",
   },
   {
@@ -246,7 +246,7 @@ export const products = [
     mrp: 36056,
     productPrice: 31008,
     discount: "14%",
-    productRating: 3.7,
+    theme: "boho",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -262,7 +262,7 @@ export const products = [
     mrp: 31644,
     productPrice: 20885,
     discount: "34%",
-    productRating: 4.9,
+    theme: "classic",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -278,7 +278,7 @@ export const products = [
     mrp: 38374,
     productPrice: 30315,
     discount: "21%",
-    productRating: 3.9,
+    theme: "modern",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -294,7 +294,7 @@ export const products = [
     mrp: 34286,
     productPrice: 23657,
     discount: "31%",
-    productRating: 4.0,
+    theme: "boho",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -310,7 +310,7 @@ export const products = [
     mrp: 24637,
     productPrice: 21680,
     discount: "12%",
-    productRating: 4.3,
+    theme: "classic",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -326,7 +326,7 @@ export const products = [
     mrp: 31347,
     productPrice: 23196,
     discount: "26%",
-    productRating: 4.6,
+    theme: "modern",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -342,7 +342,7 @@ export const products = [
     mrp: 49602,
     productPrice: 36705,
     discount: "26%",
-    productRating: 4.7,
+    theme: "boho",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -358,7 +358,7 @@ export const products = [
     mrp: 7184,
     productPrice: 4597,
     discount: "36%",
-    productRating: 4.2,
+    theme: "classic",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -374,7 +374,7 @@ export const products = [
     mrp: 24400,
     productPrice: 18056,
     discount: "26%",
-    productRating: 3.8,
+    theme: "modern",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -390,7 +390,7 @@ export const products = [
     mrp: 14432,
     productPrice: 12700,
     discount: "12%",
-    productRating: 3.5,
+    theme: "boho",
     description:
       "A comfortable bed built for restful nights and modern design.",
   },
@@ -406,7 +406,7 @@ export const products = [
     mrp: 42610,
     productPrice: 28122,
     discount: "34%",
-    productRating: 4.3,
+    theme: "classic",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -421,7 +421,7 @@ export const products = [
     mrp: 9450,
     productPrice: 6425,
     discount: "32%",
-    productRating: 4.0,
+    theme: "modern",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -436,7 +436,7 @@ export const products = [
     mrp: 38635,
     productPrice: 23953,
     discount: "38%",
-    productRating: 3.8,
+    theme: "boho",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -451,7 +451,7 @@ export const products = [
     mrp: 45841,
     productPrice: 28879,
     discount: "37%",
-    productRating: 4.2,
+    theme: "classic",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -466,7 +466,7 @@ export const products = [
     mrp: 27813,
     productPrice: 19469,
     discount: "30%",
-    productRating: 3.7,
+    theme: "modern",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -481,7 +481,7 @@ export const products = [
     mrp: 49123,
     productPrice: 34386,
     discount: "30%",
-    productRating: 4.1,
+    theme: "boho",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -496,7 +496,7 @@ export const products = [
     mrp: 30520,
     productPrice: 22279,
     discount: "27%",
-    productRating: 3.7,
+    theme: "classic",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -511,7 +511,7 @@ export const products = [
     mrp: 16710,
     productPrice: 10527,
     discount: "37%",
-    productRating: 4.9,
+    theme: "modern",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -526,7 +526,7 @@ export const products = [
     mrp: 8902,
     productPrice: 7477,
     discount: "16%",
-    productRating: 4.8,
+    theme: "boho",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -541,7 +541,7 @@ export const products = [
     mrp: 30869,
     productPrice: 26547,
     discount: "14%",
-    productRating: 4.1,
+    theme: "classic",
     description: "Elegant dining tables to gather and enjoy meals.",
   },
   {
@@ -556,7 +556,7 @@ export const products = [
     mrp: 21664,
     productPrice: 15814,
     discount: "27%",
-    productRating: 4.6,
+    theme: "modern",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -571,7 +571,7 @@ export const products = [
     mrp: 12350,
     productPrice: 8274,
     discount: "33%",
-    productRating: 4.6,
+    theme: "boho",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -586,7 +586,7 @@ export const products = [
     mrp: 8860,
     productPrice: 5581,
     discount: "37%",
-    productRating: 4.2,
+    theme: "classic",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -601,7 +601,7 @@ export const products = [
     mrp: 47412,
     productPrice: 30343,
     discount: "36%",
-    productRating: 4.8,
+    theme: "modern",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -616,7 +616,7 @@ export const products = [
     mrp: 34921,
     productPrice: 24095,
     discount: "31%",
-    productRating: 4.1,
+    theme: "boho",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -631,7 +631,7 @@ export const products = [
     mrp: 5892,
     productPrice: 3594,
     discount: "39%",
-    productRating: 4.1,
+    theme: "classic",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -646,7 +646,7 @@ export const products = [
     mrp: 27135,
     productPrice: 21165,
     discount: "22%",
-    productRating: 3.5,
+    theme: "modern",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -661,7 +661,7 @@ export const products = [
     mrp: 47502,
     productPrice: 29926,
     discount: "37%",
-    productRating: 3.8,
+    theme: "boho",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -676,7 +676,7 @@ export const products = [
     mrp: 27965,
     productPrice: 17617,
     discount: "37%",
-    productRating: 4.2,
+    theme: "classic",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -691,7 +691,7 @@ export const products = [
     mrp: 38639,
     productPrice: 26660,
     discount: "31%",
-    productRating: 4.8,
+    theme: "modern",
     description: "Supportive and sleek chairs that fit any setting.",
   },
   {
@@ -706,7 +706,7 @@ export const products = [
     mrp: 18228,
     productPrice: 12030,
     discount: "34%",
-    productRating: 4.6,
+    theme: "boho",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -721,7 +721,7 @@ export const products = [
     mrp: 7990,
     productPrice: 6951,
     discount: "13%",
-    productRating: 3.7,
+    theme: "classic",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -736,7 +736,7 @@ export const products = [
     mrp: 11537,
     productPrice: 10152,
     discount: "12%",
-    productRating: 3.8,
+    theme: "modern",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -751,7 +751,7 @@ export const products = [
     mrp: 13391,
     productPrice: 11650,
     discount: "13%",
-    productRating: 5.0,
+    theme: "boho",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -766,7 +766,7 @@ export const products = [
     mrp: 15328,
     productPrice: 12415,
     discount: "19%",
-    productRating: 3.8,
+    theme: "classic",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -781,7 +781,7 @@ export const products = [
     mrp: 31583,
     productPrice: 20844,
     discount: "34%",
-    productRating: 4.2,
+    theme: "modern",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -796,7 +796,7 @@ export const products = [
     mrp: 10873,
     productPrice: 9568,
     discount: "12%",
-    productRating: 3.8,
+    theme: "boho",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -811,7 +811,7 @@ export const products = [
     mrp: 25526,
     productPrice: 21441,
     discount: "16%",
-    productRating: 4.0,
+    theme: "classic",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -826,7 +826,7 @@ export const products = [
     mrp: 42526,
     productPrice: 31469,
     discount: "26%",
-    productRating: 4.6,
+    theme: "modern",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -841,7 +841,7 @@ export const products = [
     mrp: 49534,
     productPrice: 36655,
     discount: "26%",
-    productRating: 3.7,
+    theme: "boho",
     description: "Spacious wardrobes to organize your essentials.",
   },
   {
@@ -856,7 +856,7 @@ export const products = [
     mrp: 38788,
     productPrice: 23272,
     discount: "40%",
-    productRating: 4.0,
+    theme: "classic",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -871,7 +871,7 @@ export const products = [
     mrp: 23902,
     productPrice: 16731,
     discount: "30%",
-    productRating: 4.2,
+    theme: "modern",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -886,7 +886,7 @@ export const products = [
     mrp: 32198,
     productPrice: 24148,
     discount: "25%",
-    productRating: 4.7,
+    theme: "boho",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -901,7 +901,7 @@ export const products = [
     mrp: 47940,
     productPrice: 38352,
     discount: "20%",
-    productRating: 4.0,
+    theme: "classic",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -916,7 +916,7 @@ export const products = [
     mrp: 47201,
     productPrice: 37288,
     discount: "21%",
-    productRating: 3.9,
+    theme: "modern",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -931,7 +931,7 @@ export const products = [
     mrp: 41581,
     productPrice: 34928,
     discount: "16%",
-    productRating: 4.6,
+    theme: "boho",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -946,7 +946,7 @@ export const products = [
     mrp: 16017,
     productPrice: 10250,
     discount: "36%",
-    productRating: 5.0,
+    theme: "classic",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -961,7 +961,7 @@ export const products = [
     mrp: 41763,
     productPrice: 29234,
     discount: "30%",
-    productRating: 4.9,
+    theme: "modern",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -976,7 +976,7 @@ export const products = [
     mrp: 17616,
     productPrice: 12683,
     discount: "28%",
-    productRating: 3.9,
+    theme: "boho",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -991,7 +991,7 @@ export const products = [
     mrp: 7281,
     productPrice: 5606,
     discount: "23%",
-    productRating: 4.7,
+    theme: "classic",
     description: "Contemporary TV units to enhance your living room.",
   },
   {
@@ -1006,7 +1006,7 @@ export const products = [
     mrp: 43237,
     productPrice: 33724,
     discount: "22%",
-    productRating: 4.7,
+    theme: "modern",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1021,7 +1021,7 @@ export const products = [
     mrp: 12185,
     productPrice: 8773,
     discount: "28%",
-    productRating: 4.6,
+    theme: "boho",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1036,7 +1036,7 @@ export const products = [
     mrp: 6080,
     productPrice: 4073,
     discount: "33%",
-    productRating: 4.0,
+    theme: "classic",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1051,7 +1051,7 @@ export const products = [
     mrp: 23397,
     productPrice: 15208,
     discount: "35%",
-    productRating: 4.4,
+    theme: "modern",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1066,7 +1066,7 @@ export const products = [
     mrp: 8166,
     productPrice: 6777,
     discount: "17%",
-    productRating: 4.8,
+    theme: "boho",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1081,7 +1081,7 @@ export const products = [
     mrp: 9314,
     productPrice: 8196,
     discount: "12%",
-    productRating: 4.0,
+    theme: "classic",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1096,7 +1096,7 @@ export const products = [
     mrp: 44322,
     productPrice: 27036,
     discount: "39%",
-    productRating: 4.0,
+    theme: "modern",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1111,7 +1111,7 @@ export const products = [
     mrp: 35440,
     productPrice: 27288,
     discount: "23%",
-    productRating: 4.4,
+    theme: "boho",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1126,7 +1126,7 @@ export const products = [
     mrp: 20087,
     productPrice: 16471,
     discount: "18%",
-    productRating: 3.9,
+    theme: "classic",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1141,7 +1141,7 @@ export const products = [
     mrp: 6093,
     productPrice: 3655,
     discount: "40%",
-    productRating: 3.8,
+    theme: "modern",
     description: "Stylish bookshelves to showcase your collection.",
   },
   {
@@ -1156,7 +1156,7 @@ export const products = [
     mrp: 14881,
     productPrice: 11904,
     discount: "20%",
-    productRating: 4.0,
+    theme: "boho",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1171,7 +1171,7 @@ export const products = [
     mrp: 48851,
     productPrice: 36638,
     discount: "25%",
-    productRating: 4.9,
+    theme: "classic",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1186,7 +1186,7 @@ export const products = [
     mrp: 33672,
     productPrice: 21550,
     discount: "36%",
-    productRating: 4.6,
+    theme: "modern",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1201,7 +1201,7 @@ export const products = [
     mrp: 6020,
     productPrice: 3973,
     discount: "34%",
-    productRating: 4.7,
+    theme: "boho",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1216,7 +1216,7 @@ export const products = [
     mrp: 18025,
     productPrice: 14239,
     discount: "21%",
-    productRating: 3.7,
+    theme: "classic",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1231,7 +1231,7 @@ export const products = [
     mrp: 25680,
     productPrice: 22341,
     discount: "13%",
-    productRating: 4.7,
+    theme: "modern",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1246,7 +1246,7 @@ export const products = [
     mrp: 14865,
     productPrice: 9959,
     discount: "33%",
-    productRating: 4.8,
+    theme: "boho",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1261,7 +1261,7 @@ export const products = [
     mrp: 49136,
     productPrice: 30464,
     discount: "38%",
-    productRating: 3.9,
+    theme: "classic",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1276,7 +1276,7 @@ export const products = [
     mrp: 20865,
     productPrice: 14605,
     discount: "30%",
-    productRating: 4.9,
+    theme: "modern",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1291,7 +1291,7 @@ export const products = [
     mrp: 49359,
     productPrice: 39487,
     discount: "20%",
-    productRating: 3.7,
+    theme: "boho",
     description: "Compact coffee tables for relaxing moments.",
   },
   {
@@ -1306,7 +1306,7 @@ export const products = [
     mrp: 13176,
     productPrice: 11594,
     discount: "12%",
-    productRating: 4.9,
+    theme: "classic",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1321,7 +1321,7 @@ export const products = [
     mrp: 44606,
     productPrice: 40145,
     discount: "10%",
-    productRating: 4.5,
+    theme: "modern",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1336,7 +1336,7 @@ export const products = [
     mrp: 48186,
     productPrice: 31320,
     discount: "35%",
-    productRating: 4.3,
+    theme: "boho",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1351,7 +1351,7 @@ export const products = [
     mrp: 27599,
     productPrice: 22631,
     discount: "18%",
-    productRating: 4.9,
+    theme: "classic",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1366,7 +1366,7 @@ export const products = [
     mrp: 31645,
     productPrice: 24683,
     discount: "22%",
-    productRating: 4.0,
+    theme: "modern",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1381,7 +1381,7 @@ export const products = [
     mrp: 30260,
     productPrice: 22392,
     discount: "26%",
-    productRating: 3.6,
+    theme: "boho",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1396,7 +1396,7 @@ export const products = [
     mrp: 15584,
     productPrice: 10441,
     discount: "33%",
-    productRating: 4.7,
+    theme: "classic",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1411,7 +1411,7 @@ export const products = [
     mrp: 32222,
     productPrice: 26744,
     discount: "17%",
-    productRating: 4.5,
+    theme: "modern",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1426,7 +1426,7 @@ export const products = [
     mrp: 13885,
     productPrice: 9997,
     discount: "28%",
-    productRating: 4.6,
+    theme: "boho",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1441,7 +1441,7 @@ export const products = [
     mrp: 47661,
     productPrice: 32409,
     discount: "32%",
-    productRating: 4.1,
+    theme: "classic",
     description: "Comfortable recliners for your lounging needs.",
   },
   {
@@ -1456,7 +1456,7 @@ export const products = [
     mrp: 30408,
     productPrice: 20981,
     discount: "31%",
-    productRating: 4.9,
+    theme: "modern",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1471,7 +1471,7 @@ export const products = [
     mrp: 30975,
     productPrice: 23541,
     discount: "24%",
-    productRating: 4.5,
+    theme: "boho",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1486,7 +1486,7 @@ export const products = [
     mrp: 46946,
     productPrice: 28167,
     discount: "40%",
-    productRating: 3.8,
+    theme: "classic",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1501,7 +1501,7 @@ export const products = [
     mrp: 10016,
     productPrice: 8413,
     discount: "16%",
-    productRating: 4.8,
+    theme: "modern",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1516,7 +1516,7 @@ export const products = [
     mrp: 13151,
     productPrice: 8153,
     discount: "38%",
-    productRating: 3.5,
+    theme: "boho",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1531,7 +1531,7 @@ export const products = [
     mrp: 12767,
     productPrice: 8298,
     discount: "35%",
-    productRating: 4.4,
+    theme: "classic",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1546,7 +1546,7 @@ export const products = [
     mrp: 47028,
     productPrice: 35741,
     discount: "24%",
-    productRating: 3.6,
+    theme: "modern",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1561,7 +1561,7 @@ export const products = [
     mrp: 20894,
     productPrice: 13581,
     discount: "35%",
-    productRating: 3.7,
+    theme: "boho",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1576,7 +1576,7 @@ export const products = [
     mrp: 41892,
     productPrice: 27229,
     discount: "35%",
-    productRating: 4.1,
+    theme: "classic",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1591,7 +1591,7 @@ export const products = [
     mrp: 14458,
     productPrice: 11132,
     discount: "23%",
-    productRating: 4.8,
+    theme: "modern",
     description: "Functional desks designed for productivity.",
   },
   {
@@ -1606,7 +1606,7 @@ export const products = [
     mrp: 45702,
     productPrice: 39303,
     discount: "14%",
-    productRating: 4.9,
+    theme: "boho",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1621,7 +1621,7 @@ export const products = [
     mrp: 44693,
     productPrice: 37542,
     discount: "16%",
-    productRating: 3.8,
+    theme: "classic",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1636,7 +1636,7 @@ export const products = [
     mrp: 6235,
     productPrice: 5611,
     discount: "10%",
-    productRating: 3.7,
+    theme: "modern",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1651,7 +1651,7 @@ export const products = [
     mrp: 38962,
     productPrice: 24935,
     discount: "36%",
-    productRating: 4.9,
+    theme: "boho",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1666,7 +1666,7 @@ export const products = [
     mrp: 34195,
     productPrice: 22910,
     discount: "33%",
-    productRating: 4.0,
+    theme: "classic",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1681,7 +1681,7 @@ export const products = [
     mrp: 40630,
     productPrice: 30472,
     discount: "25%",
-    productRating: 4.9,
+    theme: "modern",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1696,7 +1696,7 @@ export const products = [
     mrp: 6594,
     productPrice: 5604,
     discount: "15%",
-    productRating: 4.5,
+    theme: "boho",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1711,7 +1711,7 @@ export const products = [
     mrp: 16971,
     productPrice: 11540,
     discount: "32%",
-    productRating: 4.7,
+    theme: "classic",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1726,7 +1726,7 @@ export const products = [
     mrp: 9984,
     productPrice: 6289,
     discount: "37%",
-    productRating: 5.0,
+    theme: "modern",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1741,7 +1741,7 @@ export const products = [
     mrp: 45856,
     productPrice: 35767,
     discount: "22%",
-    productRating: 4.3,
+    theme: "boho",
     description: "Handy nightstands to keep your essentials close.",
   },
   {
@@ -1756,7 +1756,7 @@ export const products = [
     mrp: 7951,
     productPrice: 5804,
     discount: "27%",
-    productRating: 4.1,
+    theme: "classic",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1771,7 +1771,7 @@ export const products = [
     mrp: 47321,
     productPrice: 31231,
     discount: "34%",
-    productRating: 4.0,
+    theme: "modern",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1786,7 +1786,7 @@ export const products = [
     mrp: 8315,
     productPrice: 7317,
     discount: "12%",
-    productRating: 3.6,
+    theme: "boho",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1801,7 +1801,7 @@ export const products = [
     mrp: 36471,
     productPrice: 32823,
     discount: "10%",
-    productRating: 4.7,
+    theme: "classic",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1816,7 +1816,7 @@ export const products = [
     mrp: 38462,
     productPrice: 29615,
     discount: "23%",
-    productRating: 4.4,
+    theme: "modern",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1831,7 +1831,7 @@ export const products = [
     mrp: 25397,
     productPrice: 19301,
     discount: "24%",
-    productRating: 4.2,
+    theme: "boho",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1846,7 +1846,7 @@ export const products = [
     mrp: 35621,
     productPrice: 28140,
     discount: "21%",
-    productRating: 4.3,
+    theme: "classic",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1861,7 +1861,7 @@ export const products = [
     mrp: 5818,
     productPrice: 4014,
     discount: "31%",
-    productRating: 4.0,
+    theme: "modern",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1876,7 +1876,7 @@ export const products = [
     mrp: 16110,
     productPrice: 14499,
     discount: "10%",
-    productRating: 4.5,
+    theme: "boho",
     description: "Beautiful dressers for stylish storage.",
   },
   {
@@ -1891,7 +1891,7 @@ export const products = [
     mrp: 6527,
     productPrice: 5874,
     discount: "10%",
-    productRating: 4.6,
+    theme: "classic",
     description: "Beautiful dressers for stylish storage.",
   },
 ];
