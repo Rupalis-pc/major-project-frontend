@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
 import { products } from "./array";
+import { useState } from "react";
 
 export default function Cart() {
+  const [selectedAddressIndex, setSelectedAddressIndex] = useState(null);
+  const { setPlacedOrders, clearCart } = useProductContext();
+
   const {
     addedProductIds,
     addToWishlist,
@@ -11,6 +15,7 @@ export default function Cart() {
     getProductQuantity,
     decreaseQuantity,
     wishListProductIds,
+    address,
   } = useProductContext();
 
   const addedProducts = products.filter((product) =>
@@ -23,6 +28,27 @@ export default function Cart() {
   );
 
   const deliveryCharges = 120;
+
+  const selectedAddressForCheckout = address[selectedAddressIndex];
+
+  function handlePlaceOrder() {
+    if (addedProducts.length === 0 || selectedAddressIndex === null) return;
+
+    const newOrder = {
+      orderId: Date.now(),
+      items: addedProducts.map((product) => ({
+        ...product,
+        quantity: getProductQuantity(product.productId),
+      })),
+      total: allAddedProductPrice + deliveryCharges,
+      address: selectedAddressForCheckout,
+      date: new Date().toLocaleString(),
+    };
+    console.log("New order added:", newOrder);
+
+    setPlacedOrders((prev) => [...prev, newOrder]);
+    clearCart();
+  }
 
   return (
     <main className="container">
@@ -159,14 +185,86 @@ export default function Cart() {
                         <p>Rs. {allAddedProductPrice + deliveryCharges} </p>
                       </div>
                       <hr />
+                      <div className="d-grid mb-3">
+                        <label className="mb-2 fw-semibold">
+                          Delivery Address
+                        </label>
+
+                        {address.length > 0 ? (
+                          <>
+                            <select
+                              className="form-select mb-2"
+                              onChange={(event) =>
+                                setSelectedAddressIndex(event.target.value)
+                              }
+                            >
+                              <option value="">Select address</option>
+                              {address.map((addr, index) => (
+                                <option key={index} value={index}>
+                                  {addr.firstName} {addr.lastName},{" "}
+                                  {addr.address}, {addr.city}, {addr.state} -{" "}
+                                  {addr.zip}
+                                </option>
+                              ))}
+                            </select>
+                            {selectedAddressIndex !== null ? (
+                              <div className="d-flex justify-content-between">
+                                <Link
+                                  to="/profile?section=address"
+                                  className="btn btn-outline-info btn-sm"
+                                >
+                                  Edit/Delete Address
+                                </Link>
+                                <Link
+                                  to="/profile?section=address"
+                                  className="btn btn-outline-info btn-sm"
+                                >
+                                  Add New Address
+                                </Link>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </>
+                        ) : (
+                          <Link
+                            to="/profile?section=address"
+                            className="btn btn-outline-info btn-sm"
+                          >
+                            Add New Address
+                          </Link>
+                        )}
+                      </div>
+
+                      {selectedAddressIndex !== null &&
+                        selectedAddressForCheckout && (
+                          <p>
+                            <span className="fw-bold">Deliever To:</span> <br />
+                            {selectedAddressForCheckout.firstName}{" "}
+                            {selectedAddressForCheckout.lastName},{" "}
+                            {selectedAddressForCheckout.address},{" "}
+                            {selectedAddressForCheckout.address2 &&
+                              `, ${selectedAddressForCheckout.address2}`}{" "}
+                            , {selectedAddressForCheckout.city},{" "}
+                            {selectedAddressForCheckout.state} -{" "}
+                            {selectedAddressForCheckout.zip}
+                          </p>
+                        )}
 
                       <div className="d-grid">
-                        <button
-                          className="btn btn-info"
-                          onClick={() => alert("Your order is placed")}
-                        >
-                          Place Order
-                        </button>
+                        {selectedAddressIndex === null ? (
+                          <button className="btn btn-info" disabled>
+                            Place Order
+                          </button>
+                        ) : (
+                          <Link
+                            className="btn btn-info"
+                            to="/profile?section=orders"
+                            onClick={handlePlaceOrder}
+                          >
+                            Place Order
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>

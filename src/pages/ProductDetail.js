@@ -4,7 +4,14 @@ import { products } from "./array";
 import { Link } from "react-router-dom";
 
 export default function ProductDetail() {
-  const { addToWishlist, addToCart, wishListProductIds } = useProductContext();
+  const {
+    addToWishlist,
+    addToCart,
+    wishListProductIds,
+    increaseQuantity,
+    getProductQuantity,
+    decreaseQuantity,
+  } = useProductContext();
 
   const { productId } = useParams();
 
@@ -45,9 +52,21 @@ export default function ProductDetail() {
             <div className="d-flex align-items-center mb-4">
               <strong className="me-2">Quantity:</strong>
               <div className="btn-group" role="group">
-                <button className="btn btn-outline-info btn-sm">-</button>
-                <button className="btn btn-outline-info btn-sm">1</button>
-                <button className="btn btn-outline-info btn-sm">+</button>
+                <button
+                  className="btn btn-outline-info btn-sm"
+                  onClick={() => decreaseQuantity(product.productId)}
+                >
+                  -
+                </button>
+                <button className="btn btn-outline-info btn-sm disabled">
+                  {getProductQuantity(product.productId)}
+                </button>
+                <button
+                  className="btn btn-outline-info btn-sm"
+                  onClick={() => increaseQuantity(product.productId)}
+                >
+                  +
+                </button>
               </div>
             </div>
 

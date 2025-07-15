@@ -10,6 +10,8 @@ export function ProductProvider({ children }) {
   const [addedProductIds, setAddedProductIds] = useState([]);
   const [wishListProductIds, setWishListProductIds] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [address, setAddress] = useState([]);
+  const [placedOrders, setPlacedOrders] = useState([]);
 
   //Adds ids to addedProductIds array
   function addToCart(value) {
@@ -55,6 +57,10 @@ export function ProductProvider({ children }) {
     return addedProductIds.filter((id) => id === productId).length;
   }
 
+  function clearCart() {
+    setAddedProductIds([]);
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -69,6 +75,11 @@ export function ProductProvider({ children }) {
         increaseQuantity,
         getProductQuantity,
         decreaseQuantity,
+        address,
+        setAddress,
+        placedOrders,
+        setPlacedOrders,
+        clearCart,
       }}
     >
       {children}

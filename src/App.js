@@ -12,6 +12,7 @@ import Wishlist from "./pages/Wishlist";
 import ProductDetail from "./pages/ProductDetail";
 import NewCollection from "./pages/NewCollection";
 import Profile from "./pages/Profile";
+import OrderDetail from "./pages/OrderDetail";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/newCollection" element={<NewCollection />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/order/:orderId" element={<OrderDetail />} />
         </Routes>
         <Footer />
       </Router>
