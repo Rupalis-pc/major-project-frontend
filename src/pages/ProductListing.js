@@ -1,14 +1,20 @@
 import { useParams } from "react-router-dom";
-import { products } from "./array";
 import { furnitureItems } from "./array";
 import useProductContext from "../contexts/useContext";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import useFetch from "../useFetch";
+import Loader from "../components/Loader";
 
 export default function ProductListing() {
   const [rating, setRating] = useState("all");
   const [theme, setTheme] = useState("all");
   const [sortBy, setSortBy] = useState("sortById");
+  const {
+    data: products,
+    loading,
+    error,
+  } = useFetch("https://major-project-backend-liart.vercel.app/products", []);
 
   const {
     addToCart,
@@ -155,6 +161,7 @@ export default function ProductListing() {
                   type="radio"
                   name="sortPrice"
                   id="sortLowToHigh"
+                  checked={sortBy === "sortLowToHighPrice"}
                 />
                 <label
                   className="form-check-label"
@@ -170,6 +177,7 @@ export default function ProductListing() {
                   type="radio"
                   name="sortPrice"
                   id="sortHighToLow"
+                  checked={sortBy === "sortHighToLowPrice"}
                 />
                 <label
                   className="form-check-label"
@@ -185,82 +193,86 @@ export default function ProductListing() {
 
         {/* listing */}
         <div className="col-md-9 row">
-          {finalProducts?.map((product) => (
-            <div className="col-md-4 mb-5" key={product.productId}>
-              <div className="card h-100 shadow-sm border-0">
-                <div className="position-relative">
-                  <Link
-                    to={"/product/" + product.productId}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <img
-                      src={product.productImage}
-                      alt={product.productName}
-                      className="card-img-top object-fit-cover"
-                      style={{
-                        height: "200px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </Link>
-                  <div className="position-absolute top-0 end-0 m-2">
-                    <button
-                      className="rounded-circle p-2"
-                      style={{
-                        backgroundColor: "rgba(0,0,0,0.4)",
-                        border: "none",
-                        width: "40px",
-                        height: "40px",
-                      }}
-                      onClick={() => wishlistHandler(product)}
+          {loading ? (
+            <Loader />
+          ) : (
+            finalProducts?.map((product) => (
+              <div className="col-md-4 mb-5" key={product.productId}>
+                <div className="card h-100 shadow-sm border-0">
+                  <div className="position-relative">
+                    <Link
+                      to={"/product/" + product.productId}
+                      style={{ textDecoration: "none" }}
                     >
-                      {wishListProductIds.find(
-                        (id) => id === product.productId
-                      ) ? (
-                        <i className="bi bi-suit-heart-fill text-danger fs-5"></i>
-                      ) : (
-                        <i className="bi bi-suit-heart text-white fs-5"></i>
-                      )}
+                      <img
+                        src={product.productImage}
+                        alt={product.productName}
+                        className="card-img-top object-fit-cover"
+                        style={{
+                          height: "200px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </Link>
+                    <div className="position-absolute top-0 end-0 m-2">
+                      <button
+                        className="rounded-circle p-2"
+                        style={{
+                          backgroundColor: "rgba(0,0,0,0.4)",
+                          border: "none",
+                          width: "40px",
+                          height: "40px",
+                        }}
+                        onClick={() => wishlistHandler(product)}
+                      >
+                        {wishListProductIds.find(
+                          (id) => id === product.productId
+                        ) ? (
+                          <i className="bi bi-suit-heart-fill text-danger fs-5"></i>
+                        ) : (
+                          <i className="bi bi-suit-heart text-white fs-5"></i>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="d-flex justify-content-between">
+                    <small className="text-secondary ms-2">
+                      Rating: {product.productRating}{" "}
+                      <i class="bi bi-star-fill"></i>
+                    </small>
+                    <small className="text-secondary me-2">
+                      MRP: ₹ {product.mrp}
+                    </small>
+                  </div>
+
+                  <div className="card-body text-center">
+                    <Link
+                      to={"/product/" + product.productId}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <h5 className="card-title mb-2 fw-semibold">
+                        {product.productName}
+                      </h5>
+                    </Link>
+                    <p className="mb-3">
+                      ₹ {product.productPrice}{" "}
+                      <span className="text-danger small">
+                        <i className="bi bi-arrow-down small me-1"></i>
+                        {product.discount} Off
+                      </span>
+                    </p>
+                    <button
+                      className="btn btn-info w-100"
+                      onClick={() => addToCartHandler(product)}
+                    >
+                      Add To Cart
                     </button>
                   </div>
                 </div>
-
-                <div className="d-flex justify-content-between">
-                  <small className="text-secondary ms-2">
-                    Rating: {product.productRating}{" "}
-                    <i class="bi bi-star-fill"></i>
-                  </small>
-                  <small className="text-secondary me-2">
-                    MRP: ₹ {product.mrp}
-                  </small>
-                </div>
-
-                <div className="card-body text-center">
-                  <Link
-                    to={"/product/" + product.productId}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <h5 className="card-title mb-2 fw-semibold">
-                      {product.productName}
-                    </h5>
-                  </Link>
-                  <p className="mb-3">
-                    ₹ {product.productPrice}{" "}
-                    <span className="text-danger small">
-                      <i className="bi bi-arrow-down small me-1"></i>
-                      {product.discount} Off
-                    </span>
-                  </p>
-                  <button
-                    className="btn btn-info w-100"
-                    onClick={() => addToCartHandler(product)}
-                  >
-                    Add To Cart
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </main>

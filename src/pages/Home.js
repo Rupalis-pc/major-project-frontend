@@ -1,9 +1,18 @@
 import useProductContext from "../contexts/useContext";
-import { furnitureItems } from "./array";
+
 import { Link } from "react-router-dom";
+import useFetch from "../useFetch";
+import Loader from "../components/Loader";
 
 export default function Home() {
   const { searchInput } = useProductContext();
+  const { data, loading, error } = useFetch(
+    "https://major-project-backend-liart.vercel.app/categories",
+    []
+  );
+  console.log(data);
+
+  const furnitureItems = data;
 
   const showFurniture = searchInput
     ? furnitureItems.filter((item) =>
@@ -11,12 +20,17 @@ export default function Home() {
       )
     : furnitureItems;
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <main className="container">
       <div className="text-center mb-4 ">
         <h4>Explore Our Furniture Range</h4>
         <small>Impressive Collection for your Dream Home</small>
       </div>
+
       <div className="row">
         {showFurniture.map((item) => {
           return (
