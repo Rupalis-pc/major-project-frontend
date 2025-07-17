@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
-import { products } from "./array";
 import { Link } from "react-router-dom";
+import useFetch from "../useFetch";
+import Loader from "../components/Loader";
 
 export default function ProductDetail() {
   const {
@@ -14,8 +15,17 @@ export default function ProductDetail() {
   } = useProductContext();
 
   const { productId } = useParams();
+  const { data, loading, error } = useFetch(
+    `http://localhost:4000/product/${productId}`,
+    {}
+  );
 
-  const product = products.find((product) => product.productId === productId);
+  // const product = products.find((product) => product.productId === productId);
+  const product = data;
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <main className="container my-5">

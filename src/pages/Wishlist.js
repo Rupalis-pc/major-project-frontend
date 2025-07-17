@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
-import { products } from "./array";
+import useFetch from "../useFetch";
 
 export default function Wishlist() {
   const { wishListProductIds, addToCart, deleteFromWishList } =
     useProductContext();
+  const {
+    data: products,
+    loading,
+    error,
+  } = useFetch("https://major-project-backend-liart.vercel.app/products", []);
 
   const wishlistProducts = products.filter((product) =>
     wishListProductIds.includes(product.productId)

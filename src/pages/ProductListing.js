@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { furnitureItems } from "./array";
 import useProductContext from "../contexts/useContext";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -25,15 +24,20 @@ export default function ProductListing() {
   } = useProductContext();
 
   const selectedCategory = useParams();
+  const { data } = useFetch(
+    `http://localhost:4000/category/${selectedCategory.categoryId}`,
+    {}
+  );
 
   const selectedCategoryProducts = products.filter(
     (product) => product.categoryId == selectedCategory.categoryId
   );
-  // console.log(selectedCategory);
 
-  const selectedFurniture = furnitureItems.find(
-    (item) => item.categoryId == selectedCategory.categoryId
-  );
+  // const selectedFurniture = furnitureItems.find(
+  //   (item) => item.categoryId == selectedCategory.categoryId
+  // );
+
+  const selectedFurniture = data;
 
   const addToCartHandler = (product) => {
     addToCart(product.productId);
