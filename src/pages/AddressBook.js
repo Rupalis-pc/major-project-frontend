@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import useProductContext from "../contexts/useContext";
 
-function AddressForm({ setShowForm, editIndex, setEditIndex }) {
-
-  
+function AddressForm({ setShowForm, editId, setEditId }) {
   const { address, setAddress } = useProductContext();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,19 +20,35 @@ function AddressForm({ setShowForm, editIndex, setEditIndex }) {
   }
 
   useEffect(() => {
-    if (editIndex !== null && address[editIndex]) {
-      setFormData(address[editIndex]);
+    if (editId !== null) {
+      const toEdit = address.find((adr) => adr._id == editId);
+      if (toEdit) setFormData(toEdit);
     }
-  }, [editIndex, address]);
+  }, [editId, address]);
 
   function handleAddressSubmit(event) {
     event.preventDefault();
-    const updatedAddress =
-      editIndex !== null
-        ? address.map((adr, i) => (i === editIndex ? formData : adr))
-        : [...address, formData];
 
-    setAddress(updatedAddress);
+    const url =
+      editId !== null
+        ? `https://major-project-backend-liart.vercel.app/address/update/${editId}`
+        : `https://major-project-backend-liart.vercel.app/address`;
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        const updatedAddress =
+          editId !== null
+            ? address.map((adr, i) => (adr._id === editId ? formData : adr)) //update only the selected address in the array
+            : [...address, formData]; //append the new address
+
+        setAddress(updatedAddress);
+      });
+
     setShowForm(false);
     resetForm();
   }
@@ -52,7 +66,7 @@ function AddressForm({ setShowForm, editIndex, setEditIndex }) {
       zip: "",
     });
 
-    setEditIndex(null);
+    setEditId(null);
     setShowForm(false);
   }
 
@@ -138,14 +152,14 @@ function AddressForm({ setShowForm, editIndex, setEditIndex }) {
       </div>
       <div className="col-12 d-flex gap-2">
         <button type="submit" className="btn btn-info">
-          {editIndex !== null ? "Update Address" : "Save Address"}
+          {editId !== null ? "Update Address" : "Save Address"}
         </button>
         <button
           type="button"
           className="btn btn-info"
           onClick={() => {
             setShowForm(false);
-            setEditIndex("");
+            setEditId("");
           }}
         >
           Cancel
@@ -157,17 +171,21 @@ function AddressForm({ setShowForm, editIndex, setEditIndex }) {
 
 export default function AddressBook({ showForm, setShowForm }) {
   const { address, setAddress } = useProductContext();
-  const [editIndex, setEditIndex] = useState(null);
+  const [editId, setEditId] = useState(null);
 
-  function handleEditAddress(index) {
-    setEditIndex(index);
+  function handleEditAddress(id) {
+    setEditId(id);
     setShowForm(true);
   }
 
-  function handleDeleteAddress(index) {
-    console.log(index);
-
-    setAddress(address.filter((adr, i) => i !== index));
+  function handleDeleteAddress(id) {
+    console.log(id);
+    fetch(`https://major-project-backend-liart.vercel.app/address/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => setAddress(address.filter((adr, i) => adr._id !== id)))
+      .catch((error) => console.error("Address deletion failed", error));
   }
 
   return (
@@ -175,8 +193,8 @@ export default function AddressBook({ showForm, setShowForm }) {
       {showForm ? (
         <AddressForm
           setShowForm={setShowForm}
-          editIndex={editIndex}
-          setEditIndex={setEditIndex}
+          editId={editId}
+          setEditId={setEditId}
         />
       ) : (
         <div>
@@ -219,13 +237,13 @@ export default function AddressBook({ showForm, setShowForm }) {
                   <div>
                     <button
                       className="btn btn-link"
-                      onClick={() => handleEditAddress(index)}
+                      onClick={() => handleEditAddress(addr._id)}
                     >
                       Edit
                     </button>
                     <button
                       className="btn btn-link"
-                      onClick={() => handleDeleteAddress(index)}
+                      onClick={() => handleDeleteAddress(addr._id)}
                     >
                       Delete
                     </button>

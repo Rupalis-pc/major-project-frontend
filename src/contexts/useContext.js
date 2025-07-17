@@ -15,7 +15,7 @@ export function ProductProvider({ children }) {
 
   // Fetch wishlist from backend on mount
   useEffect(() => {
-    fetch("http://localhost:4000/wishlist")
+    fetch("https://major-project-backend-liart.vercel.app/wishlist")
       .then((res) => res.json())
       .then((data) => {
         const ids = data.map((item) => item.productId); // extract only IDs
@@ -25,7 +25,7 @@ export function ProductProvider({ children }) {
 
   // Fetch cart from backend on mount
   useEffect(() => {
-    fetch("http://localhost:4000/cart")
+    fetch("https://major-project-backend-liart.vercel.app/cart")
       .then((res) => res.json())
       .then((data) => {
         const ids = data.map((item) => item.productId); // extract only IDs
@@ -33,9 +33,27 @@ export function ProductProvider({ children }) {
       });
   }, []);
 
+  // Fetch orders from backend on mount
+  useEffect(() => {
+    fetch("https://major-project-backend-liart.vercel.app/orders")
+      .then((res) => res.json())
+      .then((data) => {
+        setPlacedOrders(data);
+      });
+  }, []);
+
+  // Fetch address from backend on mount
+  useEffect(() => {
+    fetch("https://major-project-backend-liart.vercel.app/address")
+      .then((res) => res.json())
+      .then((data) => {
+        setAddress(data);
+      });
+  }, []);
+
   //Adds ids to addedProductIds array
   function addToCart(value) {
-    fetch("http://localhost:4000/cart", {
+    fetch("https://major-project-backend-liart.vercel.app/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +68,7 @@ export function ProductProvider({ children }) {
   }
 
   function addToWishlist(value) {
-    fetch("http://localhost:4000/wishlist", {
+    fetch("https://major-project-backend-liart.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +81,7 @@ export function ProductProvider({ children }) {
   }
 
   function deleteFromWishList(value) {
-    fetch(`http://localhost:4000/wishlist/${value}`, {
+    fetch(`https://major-project-backend-liart.vercel.app/wishlist/${value}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -74,7 +92,7 @@ export function ProductProvider({ children }) {
   }
 
   function deleteFromCart(value) {
-    fetch("http://localhost:4000/cart", {
+    fetch(`https://major-project-backend-liart.vercel.app/cart/${value}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -112,7 +130,12 @@ export function ProductProvider({ children }) {
   }
 
   function clearCart() {
-    setAddedProductIds([]);
+    fetch("https://major-project-backend-liart.vercel.app/cart/clear", {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => setAddedProductIds([]))
+      .catch((err) => console.error("Failed to clear cart", err));
   }
 
   return (

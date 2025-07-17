@@ -25,7 +25,7 @@ export default function ProductListing() {
 
   const selectedCategory = useParams();
   const { data } = useFetch(
-    `http://localhost:4000/category/${selectedCategory.categoryId}`,
+    `https://major-project-backend-liart.vercel.app/category/${selectedCategory.categoryId}`,
     {}
   );
 

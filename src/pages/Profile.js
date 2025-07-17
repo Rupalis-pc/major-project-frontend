@@ -9,7 +9,7 @@ export default function Profile() {
   const searchParams = new URLSearchParams(window.location.search);
   const defaultSearch = searchParams.get("section", "address") || "profile";
 
-  const { placedOrders, addedProductIds, getProductQuantity } =
+  const { placedOrders, addedProductIds } =
     useProductContext();
 
   const [selectedSection, setSelectedSection] = useState(defaultSearch);

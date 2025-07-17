@@ -16,7 +16,7 @@ export default function ProductDetail() {
 
   const { productId } = useParams();
   const { data, loading, error } = useFetch(
-    `http://localhost:4000/product/${productId}`,
+    `https://major-project-backend-liart.vercel.app/product/${productId}`,
     {}
   );
 

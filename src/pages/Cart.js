@@ -46,8 +46,18 @@ export default function Cart() {
     };
     console.log("New order added:", newOrder);
 
-    setPlacedOrders((prev) => [...prev, newOrder]);
-    clearCart();
+    fetch("https://major-project-backend-liart.vercel.app/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setPlacedOrders((prev) => [...prev, newOrder]);
+        clearCart();
+      });
   }
 
   return (
