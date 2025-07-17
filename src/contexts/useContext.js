@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ProductContext = createContext();
 
@@ -13,23 +13,77 @@ export function ProductProvider({ children }) {
   const [address, setAddress] = useState([]);
   const [placedOrders, setPlacedOrders] = useState([]);
 
+  // Fetch wishlist from backend on mount
+  useEffect(() => {
+    fetch("http://localhost:4000/wishlist")
+      .then((res) => res.json())
+      .then((data) => {
+        const ids = data.map((item) => item.productId); // extract only IDs
+        setWishListProductIds(ids);
+      });
+  }, []);
+
+  // Fetch cart from backend on mount
+  useEffect(() => {
+    fetch("http://localhost:4000/cart")
+      .then((res) => res.json())
+      .then((data) => {
+        const ids = data.map((item) => item.productId); // extract only IDs
+        setAddedProductIds(ids);
+      });
+  }, []);
+
   //Adds ids to addedProductIds array
   function addToCart(value) {
-    setAddedProductIds((prevValues) => [...prevValues, value]);
+    fetch("http://localhost:4000/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId: value }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setAddedProductIds((prevValues) => [...prevValues, value]);
+      })
+      .catch((err) => console.error("Failed to add product to Cart", err));
   }
 
   function addToWishlist(value) {
-    setWishListProductIds((prevValues) => [...prevValues, value]);
+    fetch("http://localhost:4000/wishlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId: value }),
+    })
+      .then((res) => res.json())
+      .then(() => setWishListProductIds((prev) => [...prev, value]))
+      .catch((error) => console.error("Add to wishlist failed", error));
   }
 
   function deleteFromWishList(value) {
-    setWishListProductIds((prevValues) =>
-      prevValues.filter((id) => id != value)
-    );
+    fetch(`http://localhost:4000/wishlist/${value}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() =>
+        setWishListProductIds((prev) => prev.filter((id) => id !== value))
+      )
+      .catch((error) => console.error("Remove from wishlist failed", error));
   }
 
   function deleteFromCart(value) {
-    setAddedProductIds((prevValues) => prevValues.filter((id) => id != value));
+    fetch("http://localhost:4000/cart", {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() =>
+        setAddedProductIds((prevValues) =>
+          prevValues.filter((id) => id != value)
+        )
+      )
+      .catch((error) => console.error("Remove from cart failed", error));
   }
 
   function searchProduct(value) {

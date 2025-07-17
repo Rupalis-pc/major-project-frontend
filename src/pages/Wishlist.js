@@ -19,6 +19,7 @@ export default function Wishlist() {
     addToCart(product.productId);
     deleteFromWishList(product.productId);
   }
+  console.log(wishListProductIds);
 
   return (
     <main className="container">
