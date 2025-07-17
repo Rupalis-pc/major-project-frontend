@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
 import useFetch from "../useFetch";
+import Loader from "../components/Loader";
 
 export default function Wishlist() {
   const { wishListProductIds, addToCart, deleteFromWishList } =
@@ -19,7 +20,11 @@ export default function Wishlist() {
     addToCart(product.productId);
     deleteFromWishList(product.productId);
   }
-  console.log(wishListProductIds);
+  // console.log(wishListProductIds);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <main className="container">
@@ -70,7 +75,7 @@ export default function Wishlist() {
                 <div className="d-flex justify-content-between">
                   <small className="text-secondary ms-2">
                     Rating: {product.productRating}{" "}
-                    <i class="bi bi-star-fill"></i>
+                    <i className="bi bi-star-fill"></i>
                   </small>
                   <small className="text-secondary me-2">
                     MRP: ₹ {product.mrp}

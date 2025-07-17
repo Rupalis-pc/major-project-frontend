@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
 import { products } from "./array";
 import { useState } from "react";
+import Loader from "../components/Loader";
+import useFetch from "../useFetch";
 
 export default function Cart() {
   const [selectedAddressIndex, setSelectedAddressIndex] = useState(null);
   const { setPlacedOrders, clearCart } = useProductContext();
+
+  const { loading } = useFetch(
+    "https://major-project-backend-liart.vercel.app/cart",
+    []
+  );
 
   const {
     addedProductIds,
@@ -44,7 +51,7 @@ export default function Cart() {
       address: selectedAddressForCheckout,
       date: new Date().toLocaleString(),
     };
-    console.log("New order added:", newOrder);
+    // console.log("New order added:", newOrder);
 
     fetch("https://major-project-backend-liart.vercel.app/orders", {
       method: "POST",
@@ -58,6 +65,10 @@ export default function Cart() {
         setPlacedOrders((prev) => [...prev, newOrder]);
         clearCart();
       });
+  }
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (
