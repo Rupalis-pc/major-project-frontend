@@ -28,7 +28,7 @@ export function ProductProvider({ children }) {
     fetch("https://major-project-backend-liart.vercel.app/cart")
       .then((res) => res.json())
       .then((data) => {
-        const ids = data.map((item) => item.productId); // extract only IDs
+        const ids = data.map((item) => item.productId); 
         setAddedProductIds(ids);
       });
   }, []);

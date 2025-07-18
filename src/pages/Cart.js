@@ -90,26 +90,28 @@ export default function Cart() {
               <div className="col-md-7 py-4">
                 <ul className="list-group">
                   {addedProducts.map((product) => (
-                    <li className="list-group-item" key={product.productId}>
-                      <div className="row g-4 py-4" style={{ width: "540px" }}>
-                        <div className="col-md-5">
+                    <li
+                      className="list-group-item px-2 px-sm-3"
+                      key={product.productId}
+                    >
+                      <div className="row g-3 py-3 align-items-center">
+                        <div className="col-12 col-md-5">
                           <Link
                             to={"/product/" + product.productId}
                             style={{ textDecoration: "none" }}
                           >
                             <img
                               src={product.productImage}
-                              className="img-fluid rounded"
+                              className="img-fluid rounded w-100"
                               style={{
                                 height: "220px",
-                                width: "100%",
                                 objectFit: "cover",
                               }}
                               alt={product.productName}
                             />
                           </Link>
                         </div>
-                        <div className="col-md-7">
+                        <div className="col-12 col-md-7">
                           <div>
                             <Link
                               to={"/product/" + product.productId}
@@ -147,7 +149,7 @@ export default function Cart() {
 
                               <div>Rs. {product.productPrice}</div>
                             </div>
-                            <div className="d-grid gap-2 col-10 ml-0">
+                            <div className="d-grid gap-2 px-2">
                               <button
                                 onClick={() => {
                                   toast.info(
