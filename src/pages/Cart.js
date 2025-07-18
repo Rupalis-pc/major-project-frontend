@@ -4,6 +4,7 @@ import { products } from "./array";
 import { useState } from "react";
 import Loader from "../components/Loader";
 import useFetch from "../useFetch";
+import { toast } from "react-toastify";
 
 export default function Cart() {
   const [selectedAddressIndex, setSelectedAddressIndex] = useState(null);
@@ -64,6 +65,7 @@ export default function Cart() {
       .then(() => {
         setPlacedOrders((prev) => [...prev, newOrder]);
         clearCart();
+        toast.success("Order placed successfully!");
       });
   }
 
@@ -147,9 +149,12 @@ export default function Cart() {
                             </div>
                             <div className="d-grid gap-2 col-10 ml-0">
                               <button
-                                onClick={() =>
-                                  deleteFromCart(product.productId)
-                                }
+                                onClick={() => {
+                                  toast.info(
+                                    `"${product.productName}" removed from cart.`
+                                  );
+                                  deleteFromCart(product.productId);
+                                }}
                                 className="btn btn-info"
                                 type="button"
                               >
@@ -167,9 +172,12 @@ export default function Cart() {
                                 </Link>
                               ) : (
                                 <button
-                                  onClick={() =>
-                                    addToWishlist(product.productId)
-                                  }
+                                  onClick={() => {
+                                    addToWishlist(product.productId);
+                                    toast.info(
+                                      `"${product.productName}" added to wishlist!`
+                                    );
+                                  }}
                                   className="btn btn-info"
                                   type="button"
                                 >

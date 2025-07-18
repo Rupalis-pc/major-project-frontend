@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
 import useFetch from "../useFetch";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 export default function Wishlist() {
   const { wishListProductIds, addToCart, deleteFromWishList } =
@@ -19,6 +20,7 @@ export default function Wishlist() {
   function MoveToCartHandler(product) {
     addToCart(product.productId);
     deleteFromWishList(product.productId);
+    toast.info(`"${product.productName}" moved to cart successfully!`);
   }
   // console.log(wishListProductIds);
 
@@ -65,7 +67,12 @@ export default function Wishlist() {
                         width: "40px",
                         height: "40px",
                       }}
-                      onClick={() => deleteFromWishList(product.productId)}
+                      onClick={() => {
+                        deleteFromWishList(product.productId);
+                        toast.info(
+                          `${product.productName} removed from Wishlist!`
+                        );
+                      }}
                     >
                       <i className="bi bi-suit-heart-fill text-danger fs-5"></i>
                     </button>

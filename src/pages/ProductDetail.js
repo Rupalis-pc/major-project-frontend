@@ -3,6 +3,7 @@ import useProductContext from "../contexts/useContext";
 import { Link } from "react-router-dom";
 import useFetch from "../useFetch";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 export default function ProductDetail() {
   const {
@@ -82,13 +83,23 @@ export default function ProductDetail() {
 
             <div className="d-grid gap-2 col-6">
               {wishListProductIds.find((id) => id === product.productId) ? (
-                <Link to="/wishlist" type="button" className="btn btn-info">
+                <Link
+                  to="/wishlist"
+                  type="button"
+                  className="btn btn-info"
+                  onClick={() =>
+                    toast.info(`${product.productName} added to Wishlist!`)
+                  }
+                >
                   Move to Wishlist
                 </Link>
               ) : (
                 <button
                   className="btn btn-info"
-                  onClick={() => addToWishlist(product.productId)}
+                  onClick={() => {
+                    addToWishlist(product.productId);
+                    toast.info(`${product.productName} added to Wishlist!`);
+                  }}
                 >
                   Add to Wishlist
                 </button>
@@ -96,7 +107,10 @@ export default function ProductDetail() {
 
               <button
                 className="btn btn-info"
-                onClick={() => addToCart(product.productId)}
+                onClick={() => {
+                  addToCart(product.productId);
+                  toast.info(`${product.productName} added to Cart!`);
+                }}
               >
                 Add to Cart
               </button>

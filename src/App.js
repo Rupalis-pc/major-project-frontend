@@ -13,12 +13,26 @@ import ProductDetail from "./pages/ProductDetail";
 import NewCollection from "./pages/NewCollection";
 import Profile from "./pages/Profile";
 import OrderDetail from "./pages/OrderDetail";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   return (
     <ProductProvider>
       <Router>
         <Nav />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:categoryId" element={<ProductListing />} />

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useFetch from "../useFetch";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 export default function ProductListing() {
   const [rating, setRating] = useState("all");
@@ -41,13 +42,16 @@ export default function ProductListing() {
 
   const addToCartHandler = (product) => {
     addToCart(product.productId);
+    toast.info(`${product.productName} added to Cart!`);
   };
 
   const wishlistHandler = (product) => {
     if (wishListProductIds.find((id) => id === product.productId)) {
       deleteFromWishList(product.productId);
+      toast.info(`${product.productName} removed from wishlist`);
     } else {
       addToWishlist(product.productId);
+      toast.info(`${product.productName} added to Wishlist!`);
     }
   };
 
