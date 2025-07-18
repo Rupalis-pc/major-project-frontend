@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useProductContext from "../contexts/useContext";
+import { toast } from "react-toastify";
 
 function AddressForm({ setShowForm, editId, setEditId }) {
   const { address, setAddress } = useProductContext();
@@ -47,6 +48,15 @@ function AddressForm({ setShowForm, editId, setEditId }) {
             : [...address, formData]; //append the new address
 
         setAddress(updatedAddress);
+
+        toast.info(
+          editId !== null
+            ? "Address updated successfully!"
+            : "Address added successfully!"
+        );
+      })
+      .catch(() => {
+        toast.error("Something went wrong. Please try again.");
       });
 
     setShowForm(false);
@@ -184,8 +194,11 @@ export default function AddressBook({ showForm, setShowForm }) {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then(() => setAddress(address.filter((adr, i) => adr._id !== id)))
-      .catch((error) => console.error("Address deletion failed", error));
+      .then(() => {
+        setAddress(address.filter((adr, i) => adr._id !== id));
+        toast.info("Address deleted.");
+      })
+      .catch(() => toast.error("Failed to delete address."));
   }
 
   return (

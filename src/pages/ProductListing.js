@@ -157,7 +157,7 @@ export default function ProductListing() {
                 <option value="all">All Themes</option>
                 <option value="modern">Modern</option>
                 <option value="classic">Classic</option>
-                <option value="bohi">Boho</option>
+                <option value="boho">Boho</option>
               </select>
             </div>
 
@@ -170,12 +170,9 @@ export default function ProductListing() {
                   name="sortPrice"
                   id="sortLowToHigh"
                   checked={sortBy === "sortLowToHighPrice"}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="sortLowToHigh"
                   onClick={() => setSortBy("sortLowToHighPrice")}
-                >
+                />
+                <label className="form-check-label" htmlFor="sortLowToHigh">
                   Price: Low to High
                 </label>
               </div>
@@ -186,12 +183,9 @@ export default function ProductListing() {
                   name="sortPrice"
                   id="sortHighToLow"
                   checked={sortBy === "sortHighToLowPrice"}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="sortHighToLow"
                   onClick={() => setSortBy("sortHighToLowPrice")}
-                >
+                />
+                <label className="form-check-label" htmlFor="sortHighToLow">
                   Price: High to Low
                 </label>
               </div>
