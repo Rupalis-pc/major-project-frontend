@@ -1,9 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useProductContext from "../contexts/useContext";
 
 export default function Nav() {
+  const location = useLocation();
+  const path = location.pathname;
+
   const { addedProductIds, wishListProductIds, searchProduct, searchInput } =
     useProductContext();
+
+  const showSearchInputField = path === "/" || /^\/\d+$/.test(path);
 
   function searchHandler(event) {
     const value = event.target.value;
@@ -31,17 +36,19 @@ export default function Nav() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarContent">
-            <form className="d-flex ms-lg-auto my-2 my-lg-0" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search by Category or Name"
-                aria-label="Search"
-                value={searchInput}
-                onChange={searchHandler}
-                style={{ width: "250px" }}
-              />
-            </form>
+            {showSearchInputField && (
+              <form className="d-flex ms-lg-auto my-2 my-lg-0" role="search">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search by Category or Name"
+                  aria-label="Search"
+                  value={searchInput}
+                  onChange={searchHandler}
+                  style={{ width: "250px" }}
+                />
+              </form>
+            )}
 
             <ul className="navbar-nav ms-auto d-flex flex-row flex-lg-row gap-3 align-items-center mt-3 mt-lg-0">
               <li className="nav-item">

@@ -197,7 +197,7 @@ export default function ProductListing() {
         <div className="col-md-9 row">
           {loading ? (
             <Loader />
-          ) : (
+          ) : finalProducts.length > 0 ? (
             finalProducts?.map((product) => (
               <div className="col-md-4 mb-5" key={product.productId}>
                 <div className="card h-100 shadow-sm border-0">
@@ -274,6 +274,10 @@ export default function ProductListing() {
                 </div>
               </div>
             ))
+          ) : (
+            <div className="text-center py-5 text-danger fw-medium">
+              No items matching your search.
+            </div>
           )}
         </div>
       </div>

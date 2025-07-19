@@ -32,31 +32,40 @@ export default function Home() {
       </div>
 
       <div className="row">
-        {showFurniture.map((item) => {
-          return (
-            <div className="col-md-2" key={item.type}>
-              <Link to={"/" + item.categoryId} className="text-decoration-none">
-                <div
-                  className="card border-0 text-center mb-2 align-items-center"
-                  style={{ padding: "1rem" }}
+        {showFurniture.length > 0 ? (
+          showFurniture.map((item) => {
+            return (
+              <div className="col-md-2" key={item.type}>
+                <Link
+                  to={"/" + item.categoryId}
+                  className="text-decoration-none"
                 >
-                  <img
-                    src={item.imgUrl}
-                    alt={"img_" + item.type}
-                    className="card-img-top border rounded-circle"
-                    style={{
-                      width: "150px",
-                      height: "150px",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                    }}
-                  />
-                  <p className="mt-2 fw-semibold">{item.type}</p>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
+                  <div
+                    className="card border-0 text-center mb-2 align-items-center"
+                    style={{ padding: "1rem" }}
+                  >
+                    <img
+                      src={item.imgUrl}
+                      alt={"img_" + item.type}
+                      className="card-img-top border rounded-circle"
+                      style={{
+                        width: "150px",
+                        height: "150px",
+                        objectFit: "cover",
+                        borderRadius: "10px",
+                      }}
+                    />
+                    <p className="mt-2 fw-semibold">{item.type}</p>
+                  </div>
+                </Link>
+              </div>
+            );
+          })
+        ) : (
+          <div className="text-center py-4 mb-4 text-danger fw-medium">
+            No items matching your search
+          </div>
+        )}
       </div>
       <div className="text-center py-4 bg-body-tertiary">
         <h3>Presenting the new collection</h3>
